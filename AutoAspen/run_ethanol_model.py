@@ -12,7 +12,7 @@ from classes import Aspen, Excel
 
 def main():
 
-	aspenFile = '../2011_Aspen_Ethanol_Model_APV10/DW1102A_AB.bkp'
+	aspenFile = 'DW1102A_AB.bkp'
 	outDir = 'ethanol_output'
 
 	os.makedirs(outDir, exist_ok = True)
