@@ -11,6 +11,7 @@ import re
 import numpy as np
 from pythoncom import CoInitialize
 from win32com.client import DispatchEx
+import os
 
 
 class Excel():
@@ -105,7 +106,10 @@ class Aspen():
 		CoInitialize()
 		self.file = aspenFile
 		self.COM = DispatchEx('Apwn.Document')
-		# self.COM.InitFromArchive2(self.file)
+		print('Found relative aspen file path: %s' % (self.file))
+		abspath = os.path.abspath(self.file)
+		print('Found absolute aspen file path: %s' % (abspath))
+		self.COM.InitFromArchive2(abspath)
 		
 		
 	def get_value(self, aspenPath):
