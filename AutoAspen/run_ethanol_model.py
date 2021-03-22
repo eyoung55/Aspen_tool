@@ -7,19 +7,24 @@ as part of the Virtual Engineering workflow.
 import os
 # from i_o import parse_config, save_simulation_results, plot_hist
 # from utilities import extract_input_data, generate_input_data, simulate_using_aspen
-from classes import Aspen, Excel
-
+# from classes import Aspen, Excel
+# from pythoncom import CoInitialize
+import win32com.client as win32
 
 def main():
 
-	aspenFile = 'DW1102A_AB.bkp'
+	aspenFile = os.path.abspath('DW1102A_AB.bkp')
 	outDir = 'ethanol_output'
 
 	os.makedirs(outDir, exist_ok = True)
 
-	aspenModel = Aspen(aspenFile)
+
+	# CoInitialize()
+	aspen = win32.Dispatch('Apwn.Document')
+	aspen.InitFromArchive2(aspenFile)
+
 	# simResults = simulate_using_aspen(aspenModel
-	aspenModel.close()
+	COM.close()
 
 if __name__ == "__main__":
     main()
