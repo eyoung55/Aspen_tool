@@ -4,10 +4,10 @@ as part of the Virtual Engineering workflow.
 '''
 
 # import argparse
-# import os
+import os
 # from i_o import parse_config, save_simulation_results, plot_hist
 # from utilities import extract_input_data, generate_input_data, simulate_using_aspen
-# from classes import Aspen, Excel
+from classes import Aspen, Excel
 
 
 def main():
