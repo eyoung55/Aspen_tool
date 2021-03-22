@@ -1,20 +1,7 @@
-#!/usr/bin/env pyhton
-# -*- coding: UTF-8 -*-
-
 
 __author__ = 'Chao Wu'
 __date__ = '12/25/2019'
 __version__ = '1.0'
-
-
-r'''
-This script estimates sensitivity of outputs with respect to varied variables in Aspen, values are enumerated (discrete) or given in range (continuous)
-
-Example
-python C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Scripts\sensitivity_AspenVars.py -o C:\Users\cwu\Desktop\Outputs\Aspen_automation\Results\Sugars\sensitivity_AspenVars_dis -c C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Data\Sugars\sens_AspenVars_dis_config.xlsx -a C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Data\Sugars\BC1707A_sugars_V10_mod-lite.bkp -e C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Data\Sugars\BC1707A_sugars_V10_mod.xlsm -d dis
-
-python C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Scripts\sensitivity_AspenVars.py -o C:\Users\cwu\Desktop\Outputs\Aspen_automation\Results\Sugars\sensitivity_AspenVars_con -c C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Data\Sugars\sens_AspenVars_con_config.xlsx -a C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Data\Sugars\BC1707A_sugars_V10_mod-lite.bkp -e C:\Share_GoogleDrive\NREL\Software\Aspen_automation\Data\Sugars\BC1707A_sugars_V10_mod.xlsm -d con -n 3
-'''
 
 
 
