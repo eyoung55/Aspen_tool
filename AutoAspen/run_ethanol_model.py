@@ -7,9 +7,9 @@ as part of the Virtual Engineering workflow.
 import os
 # from i_o import parse_config, save_simulation_results, plot_hist
 # from utilities import extract_input_data, generate_input_data, simulate_using_aspen
-# from classes import Aspen, Excel
+from classes import Aspen, Excel
 # from pythoncom import CoInitialize
-import win32com.client as win32
+# import win32com.client as win32
 
 def main():
 
@@ -18,39 +18,54 @@ def main():
 
 	os.makedirs(outDir, exist_ok = True)
 
-	use_existing_classes = True
 
-	if use_existing_classes == True:
-		from classes import Aspen
+	print('Opening Aspen Plus model... ', end='')
+	aspenModel = Aspen(aspenFile)
+	print('Success!')
 
-		print('Opening Aspen Plus communicator... ', end='')
-		aspenModel = Aspen(aspenFile)
-		print('Success!')
 
-		print('Running model... ', end='')
-		aspenModel.run_model()
-		print('Success!')
+	# aspenPath: str, path in ASPEN tree
+	# value: float or str, value to set
+	# ifFortran: bool, whether it is a Fortran variable
+	print('Changing values in model backup tree... ', end='')
+	ve_params = {}
+	ve_params['path/in/aspen/tree'] = 0.75
+	ve_params['path/in/aspen/tree2'] = 0.01
 
-		aspenModel.close()
-		
-	else:
-		# CoInitialize()
-		
-		print('Opening Aspen Plus communicator... ', end='')
-		aspen = win32.Dispatch('Apwn.Document')
-		print('Success!')
+	# for key, value in ve_params.items():
+	# 	aspenModel.set_value(key, value, bool(False))
+	print('Success!')
 
-		print('Initializing from backup file... ', end='')
-		aspen.InitFromArchive2(aspenFile)
-		print('Success!')
-		
-		print('Running model... ', end='')
-		aspen.Reinit()
-		aspen.Engine.Run2()
-		print('Success!')
+	print('Running model... ', end='')
+	aspenModel.run_model()
+	print('Success!')
 
-		# simResults = simulate_using_aspen(aspenModel
-		aspen.close()
+	print('Saving model output... ', end='')
+	tmpFile = '%s/%s.bkp' % (outDir, 'temp_backup')
+	aspenModel.save_model(tmpFile)
+	print('Success!')
+
+	aspenModel.close()
+
+
+
+	# # CoInitialize()
+	
+	# print('Opening Aspen Plus communicator... ', end='')
+	# aspen = win32.Dispatch('Apwn.Document')
+	# print('Success!')
+
+	# print('Initializing from backup file... ', end='')
+	# aspen.InitFromArchive2(aspenFile)
+	# print('Success!')
+	
+	# print('Running model... ', end='')
+	# aspen.Reinit()
+	# aspen.Engine.Run2()
+	# print('Success!')
+
+	# # simResults = simulate_using_aspen(aspenModel
+	# aspen.close()
 
 if __name__ == "__main__":
     main()
