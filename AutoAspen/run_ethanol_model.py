@@ -18,26 +18,39 @@ def main():
 
 	os.makedirs(outDir, exist_ok = True)
 
+	use_existing_classes = True
 
-	# CoInitialize()
-	
-	print('Opening Aspen Plus communicator... ', end='')
-	aspen = win32.Dispatch('Apwn.Document')
-	print('Success!')
+	if use_existing_classes == True:
+		from classes import Aspen
 
-	print(dir(aspen))
-	
-	print('Initializing from backup file... ', end='')
-	aspen.InitFromArchive2(aspenFile)
-	print('Success!')
-	
-	print('Running model... ', end='')
-	aspen.Reinit()
-	aspen.Engine.Run2()
-	print('Success!')
+		print('Opening Aspen Plus communicator... ', end='')
+		aspenModel = Aspen(aspenFile)
+		print('Success!')
 
-	# simResults = simulate_using_aspen(aspenModel
-	aspen.close()
+		print('Running model... ', end='')
+		aspenModel.run_model()
+		print('Success!')
+
+		aspenModel.close()
+		
+	else:
+		# CoInitialize()
+		
+		print('Opening Aspen Plus communicator... ', end='')
+		aspen = win32.Dispatch('Apwn.Document')
+		print('Success!')
+
+		print('Initializing from backup file... ', end='')
+		aspen.InitFromArchive2(aspenFile)
+		print('Success!')
+		
+		print('Running model... ', end='')
+		aspen.Reinit()
+		aspen.Engine.Run2()
+		print('Success!')
+
+		# simResults = simulate_using_aspen(aspenModel
+		aspen.close()
 
 if __name__ == "__main__":
     main()
