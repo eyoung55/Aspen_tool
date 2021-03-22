@@ -10,7 +10,7 @@ __version__ = '1.1'
 import re
 import numpy as np
 from pythoncom import CoInitialize
-from win32com.client import DispatchEx
+from win32com.client import DispatchEx, Dispatch
 import os
 
 
@@ -105,7 +105,7 @@ class Aspen():
 		
 		CoInitialize()
 		self.file = aspenFile
-		self.COM = DispatchEx('Apwn.Document')
+		self.COM = Dispatch('Apwn.Document')
 		print('Found relative aspen file path: %s' % (self.file))
 		abspath = os.path.abspath(self.file)
 		print('Found absolute aspen file path: %s' % (abspath))
