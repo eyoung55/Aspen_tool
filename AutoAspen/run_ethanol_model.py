@@ -29,7 +29,7 @@ def main():
 	print('Success!')
 
 	print('Opening Excel calculator... ', end='')
-	excelModel = Excel(excelFile)
+	excelCalculator = Excel(excelFile)
 	print('Success!')
 
 	# ================================================================
@@ -72,13 +72,13 @@ def main():
 	# Create Aspen Plus and Excel communicators
 	# ================================================================
 	print('Running Excel analysis... ', end='')
-	calculator.load_aspenModel(tmpFile)
+	excelCalculator.load_aspenModel(tmpFile)
 	if not DUMMY_OPERATION:
-		calculator.run_macro('solvedcfror')
+		excelCalculator.run_macro('solvedcfror')
 	print('Success!')
 
 	aspenModel.close()
-	excelModel.close()
+	excelCalculator.close()
 
 
 if __name__ == "__main__":
