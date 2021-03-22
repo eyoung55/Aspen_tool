@@ -20,11 +20,24 @@ def main():
 
 
 	# CoInitialize()
+	
+	print('Opening Aspen Plus communicator... ', end='')
 	aspen = win32.Dispatch('Apwn.Document')
+	print('Success!')
+
+	print(dir(aspen))
+	
+	print('Initializing from backup file... ', end='')
 	aspen.InitFromArchive2(aspenFile)
+	print('Success!')
+	
+	print('Running model... ', end='')
+	aspen.Reinit()
+	aspen.Engine.Run2()
+	print('Success!')
 
 	# simResults = simulate_using_aspen(aspenModel
-	COM.close()
+	aspen.close()
 
 if __name__ == "__main__":
     main()
