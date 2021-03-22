@@ -105,7 +105,7 @@ class Aspen():
 		CoInitialize()
 		self.file = aspenFile
 		self.COM = DispatchEx('Apwn.Document')
-		self.COM.InitFromArchive2(self.file)
+		# self.COM.InitFromArchive2(self.file)
 		
 		
 	def get_value(self, aspenPath):
