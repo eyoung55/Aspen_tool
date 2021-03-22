@@ -78,7 +78,7 @@ def main():
 		excelCalculator.run_macro('solvedcfror')
 	print('Success!')
 
-	aspenModel.close()
+	# aspenModel.close()
 	excelCalculator.close()
 
 
