@@ -72,8 +72,8 @@ def main():
 	# Create Aspen Plus and Excel communicators
 	# ================================================================
 	print('Running Excel analysis... ', end='')
-	excelCalculator.load_aspenModel(tmpFile)
 	if not DUMMY_OPERATION:
+		excelCalculator.load_aspenModel(tmpFile)
 		excelCalculator.run_macro('solvedcfror')
 	print('Success!')
 
