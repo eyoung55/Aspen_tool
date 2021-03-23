@@ -21,48 +21,48 @@ def main():
 	outDir = 'ethanol_output'
 	os.makedirs(outDir, exist_ok = True)
 
-	# # ================================================================
-	# # Create Aspen Plus communicator
-	# # ================================================================
-	# print('Opening Aspen Plus model... ', end='')
-	# aspenModel = Aspen(aspenFile)
-	# print('Success!')
+	# ================================================================
+	# Create Aspen Plus communicator
+	# ================================================================
+	print('Opening Aspen Plus model... ', end='')
+	aspenModel = Aspen(aspenFile)
+	print('Success!')
 
-	# # ================================================================
-	# # Write backup file with value updates/replacements
-	# # ================================================================
-	# # aspenPath: str, path in ASPEN tree
-	# # value: float or str, value to set
-	# # ifFortran: bool, whether it is a Fortran variable
-	# # ve_params['aspenPath'] = [value, ifFortran]
-	# ve_params = {}
-	# ve_params['path/in/aspen/tree'] = [0.75, False]
-	# ve_params['path/in/aspen/tree2'] = [0.01, False]
+	# ================================================================
+	# Write backup file with value updates/replacements
+	# ================================================================
+	# aspenPath: str, path in ASPEN tree
+	# value: float or str, value to set
+	# ifFortran: bool, whether it is a Fortran variable
+	# ve_params['aspenPath'] = [value, ifFortran]
+	ve_params = {}
+	ve_params['path/in/aspen/tree'] = [0.75, False]
+	ve_params['path/in/aspen/tree2'] = [0.01, False]
 
 	DUMMY_OPERATION = True
 
-	# print('Changing values in model backup definition tree... ', end='')
-	# for key, value in ve_params.items():
-	# 	if not DUMMY_OPERATION:
-	# 		aspenModel.set_value(key, value[0], value[1])
-	# 	else:
-	# 		pass
-	# print('Success!')
+	print('Changing values in model backup definition tree... ', end='')
+	for key, value in ve_params.items():
+		if not DUMMY_OPERATION:
+			aspenModel.set_value(key, value[0], value[1])
+		else:
+			pass
+	print('Success!')
 
-	# # ================================================================
-	# # Run the Aspen Plus model
-	# # ================================================================
-	# print('Running Aspen Plus model... ', end='')
-	# aspenModel.run_model()
-	# print('Success!')
+	# ================================================================
+	# Run the Aspen Plus model
+	# ================================================================
+	print('Running Aspen Plus model... ', end='')
+	aspenModel.run_model()
+	print('Success!')
 
-	# # ================================================================
-	# # Save current model state
-	# # ================================================================
-	# print('Saving current model definition... ', end='')
-	# tmpFile = '%s/%s.bkp' % (outDir, 'temp_backup')
-	# aspenModel.save_model(tmpFile)
-	# print('Success!')
+	# ================================================================
+	# Save current model state
+	# ================================================================
+	print('Saving current model definition... ', end='')
+	tmpFile = '%s/%s.bkp' % (outDir, 'temp_backup')
+	aspenModel.save_model(tmpFile)
+	print('Success!')
 
 	# ================================================================
 	# Create Excel communicator and run calculator
