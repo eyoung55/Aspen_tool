@@ -283,7 +283,7 @@ def response_using_calculator(aspenModel, calculator, inputData, outputInfos):
 			mutiIdx = pd.MultiIndex.from_product([inputSettings.loc[1, 'Data'], inputSettings.loc[2, 'Data']])
 			outputData = pd.DataFrame(index = inputSettings.loc[0, 'Data'], columns = mutiIdx)
 		else:
-			raise ValueError('At most 3 input variables are acceptable')
+			raise ValueError('Only 2-3 input variables are acceptable')
 			
 		outputData.index.name = ','.join(inputSettings['Input'] + ' (' + inputSettings['Unit'] + ')')
 		
@@ -360,7 +360,7 @@ def response_using_aspen(aspenModel, calculator, inputData, outputInfos, outDir)
 			mutiIdx = pd.MultiIndex.from_product([inputSettings.loc[1, 'Data'], inputSettings.loc[2, 'Data']])
 			outputData = pd.DataFrame(index = inputSettings.loc[0, 'Data'], columns = mutiIdx)
 		else:
-			raise ValueError('At most 3 input variables are acceptable')
+			raise ValueError('Only 2-3 input variables are acceptable')
 			
 		outputData.index.name = ','.join(inputSettings['Input'] + ' (' + inputSettings['Unit'] + ')')
 		
