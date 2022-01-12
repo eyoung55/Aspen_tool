@@ -14,8 +14,8 @@ python path\to\autoaspen\identify_distribution_kde.py
 '''
 
 
-OUT_DIR = r'path\to\output'
-DATA_FILE = r'path\to\data.xlsx'
+OUT_DIR = 'path\to\output'
+DATA_FILE = 'path\to\data.xlsx'
 DATA_LABEL = 'Weekly values'
 BANDWIDTH = 2
 
