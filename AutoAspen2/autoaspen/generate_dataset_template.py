@@ -23,7 +23,7 @@ Input variable types are:
 	bkp for Aspen non-Fortran variables
 	bkp_fortran for Aspen Fortran variables
 	
-python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\AutoAspen2\generate_dataset_template.py
+python path\to\autoaspen\generate_dataset_template.py
 '''
 
 
