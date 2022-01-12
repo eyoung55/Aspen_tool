@@ -10,7 +10,7 @@ __version__ = '1.2'
 r'''
 This script identifies the distribution of a continuous variable by fitting to the following unimodal distributions: "alpha", "beta", "triangular", "normal", "gamma" and "pareto", and optionally generate random values subject to the identified distribution
 
-python path\to\autoAspen\identify_distribution.py
+python path\to\autoaspen\identify_distribution.py
 '''
 
 
