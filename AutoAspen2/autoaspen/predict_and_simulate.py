@@ -23,7 +23,7 @@ python path\to\autoaspen\predict_and_simulate.py
 
 OUT_DIR = 'path\to\simulation'
 CONFIG_FILE = 'path\to\config.xlsx'
-MODEL_FILE = 'path\to\regression.mod'
+MODEL_FILE = 'path\to\training\regression.mod'
 XLABEL = 'MFSP ($/GGE)'
 
 
