@@ -15,7 +15,7 @@ python path\to\autoaspen\train_regression_model.py
 
 
 OUT_DIR = 'path\to\training'
-DATA_FILE = 'path\to\training_data.xlsx'
+DATA_FILE = 'path\to\dataset.xlsx'
 
 
 import sys
