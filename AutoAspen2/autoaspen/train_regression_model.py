@@ -10,12 +10,12 @@ __version__ = '1.0'
 r'''
 This script trains and tunes a ridge regression model using polynomial kernel.
 
-python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\AutoAspen2\train_regression_model.py
+python path\to\autoaspen\train_regression_model.py
 '''
 
 
-OUT_DIR = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q4\training'
-DATA_FILE = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q4\training\training_data.xlsx'
+OUT_DIR = 'path\to\training'
+DATA_FILE = 'path\to\training_data.xlsx'
 
 
 import sys
