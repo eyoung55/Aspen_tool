@@ -10,12 +10,12 @@ __version__ = '1.2'
 r'''
 This script identifies the distribution of a continuous variable by fitting to the following unimodal distributions: "alpha", "beta", "triangular", "normal", "gamma" and "pareto", and optionally generate random values subject to the identified distribution
 
-python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\AutoAspen2\identify_distribution.py
+python path\to\autoAspen\identify_distribution.py
 '''
 
 
-OUT_DIR = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q4\glucose_distribution'
-DATA_FILE = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Data\FY2021_Q4\glucose.xlsx'
+OUT_DIR = 'path\to\output'
+DATA_FILE = 'path\to\data.xlsx'
 DATA_LABEL = 'Monthly values'
 DISTRIBUTIONS = ['alpha', 'gamma', 'beta', 'triang', 'norm', 'pareto', 'uniform']
 
