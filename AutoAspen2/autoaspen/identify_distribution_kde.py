@@ -10,12 +10,12 @@ __version__ = '1.0'
 r'''
 This script fitts the distribution of a continuous variable using kernel density estimation, and optionally generates random samples from the model
 
-python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\case\FY21_Q3\identify_distribution_kde.py
+python path\to\autoaspen\identify_distribution_kde.py
 '''
 
 
-OUT_DIR = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q3\Identify_distribution2\Weekly_LCFS'
-DATA_FILE = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q3\Identify_distribution2\Weekly_LCFS\Weekly_LCFS.xlsx'
+OUT_DIR = r'path\to\output'
+DATA_FILE = r'path\to\data.xlsx'
 DATA_LABEL = 'Weekly values'
 BANDWIDTH = 2
 
