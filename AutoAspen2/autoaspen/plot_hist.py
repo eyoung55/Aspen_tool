@@ -10,12 +10,12 @@ __version__ = '1.0'
 r'''
 This script plots histogram 
 
-python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\case\FY21_Q3\plot_hist.py
+python path\to\autoaspen\plot_hist.py
 '''
 
 
-OUT_DIR = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q3\plot_hist'
-DATA_FILE = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q3\plot_hist\MFSP-Rin.xlsx'
+OUT_DIR = 'path\to\output\plot_hist'
+DATA_FILE = 'path\to\data.xlsx'
 XLABEL = 'MFSP - Rin ($/GGE)'
 
 
