@@ -27,10 +27,8 @@ python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\AutoAspen2\generat
 '''
 
 
-OUTPUT_FILE = r'C:\Users\cwu\Desktop\autoAspen\dataset.xlsx'
-#r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q4\training\training_data.xlsx'
-CONFIG_FILE = r'C:\Users\cwu\Desktop\autoAspen\var_infos.xlsx'
-#r'C:\Users\cwu\Desktop\Software\Aspen_automation\Data\FY2021_Q4\var_infos.xlsx'
+OUTPUT_FILE = 'path\to\dataset.xlsx'
+CONFIG_FILE = 'path\to\var_infos.xlsx'
 NRUNS = 100
 
 
