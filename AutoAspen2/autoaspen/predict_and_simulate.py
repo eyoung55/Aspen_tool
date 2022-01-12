@@ -17,13 +17,13 @@ NOTE
 1. Variable name can have unit in format of "varname (unit)";
 2. Variable name should be consistent in "input" sheet and "baseline" sheet.
 
-python C:\Users\cwu\Desktop\Software\Aspen_automation\Scripts\AutoAspen2\predict_and_simulate.py
+python path\to\autoaspen\predict_and_simulate.py
 '''
 
 
-OUT_DIR = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q4\simulation'
-CONFIG_FILE = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Data\FY2021_Q4\config.xlsx'
-MODEL_FILE = r'C:\Users\cwu\Desktop\Software\Aspen_automation\Results\FY2021_Q4\training\regression.mod'
+OUT_DIR = 'path\to\simulation'
+CONFIG_FILE = 'path\to\config.xlsx'
+MODEL_FILE = 'path\to\regression.mod'
 XLABEL = 'MFSP ($/GGE)'
 
 
