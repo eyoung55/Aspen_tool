@@ -73,9 +73,8 @@ def main():
 	print('Success!')
 
 	print('Running Excel analysis... ', end='')
-	if not DUMMY_OPERATION:
-		excelCalculator.load_aspenModel(tmpFile)
-		excelCalculator.run_macro('solvedcfror')
+	excelCalculator.load_aspenModel(tmpFile)
+	excelCalculator.run_macro('solvedcfror')
 	print('Success!')
 
 	# aspenModel.close()
