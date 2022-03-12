@@ -13,7 +13,7 @@ from classes import Aspen, Excel
 
 from vebio.Utilities import dict_to_yaml, yaml_to_dict
 
-def run_ve_aspen_model(notebook_dir, params_filename, tea_options, verbose=True, dry_run=True):
+def run_ve_aspen_model(notebook_dir, params_filename, tea_options, tea_mapping, verbose=True, dry_run=True):
 
     # Set the input and output files/directories
     aspenFile = os.path.abspath(tea_options['aspen_filename'])
@@ -25,7 +25,7 @@ def run_ve_aspen_model(notebook_dir, params_filename, tea_options, verbose=True,
     # ================================================================
     # Create Aspen Plus communicator
     # ================================================================
-    print('Opening Aspen Plus model... ', end='')
+    print('Opening Aspen Plus model... ')
     aspenModel = Aspen(aspenFile)
     print('Success!')
 
@@ -41,29 +41,30 @@ def run_ve_aspen_model(notebook_dir, params_filename, tea_options, verbose=True,
     tea_dict = yaml_to_dict(path_to_input_file)
 
     tea_replacements = {}
-    tea_replacements['path/in/aspen/tree'] = [tea_dict['enzymatic_output']['rho_g'], False]
-    tea_replacements['path/in/aspen/tree2'] = [tea_dict['enzymatic_output']['rho_x'], False]
+    fac = 1.1
+    tea_replacements[tea_mapping['enzyme_loading']] = [fac*10.0, True]
+    tea_replacements[tea_mapping['glucose_conv']] = [fac*0.9630, True]
+    tea_replacements[tea_mapping['xylose_conv']] = [fac*0.9881, True]
+    tea_replacements[tea_mapping['arabinose_conv']] = [fac*0.9881, True]
 
-
-    print('Changing values in model backup definition tree... ', end='')
+    print('Changing values in model backup definition tree... ')
     for key, val in tea_replacements.items():
         value = val[0]
         ifFortran = val[1]
-        if not dry_run:
-            aspenModel.set_value(key, value, ifFortran)
+        aspenModel.set_value(key, value, ifFortran)
     print('Success!')
 
     # ================================================================
     # Run the Aspen Plus model
     # ================================================================
-    print('Running Aspen Plus model... ', end='')
+    print('Running Aspen Plus model... ')
     aspenModel.run_model()
     print('Success!')
 
     # ================================================================
     # Save current model state
     # ================================================================
-    print('Saving current model definition... ', end='')
+    print('Saving current model definition... ')
     tmpFile = '%s/%s_bkup.bkp' % (outDir, tea_options['aspen_filename'].split('.')[0])
     aspenModel.save_model(tmpFile)
     print('Success!')
@@ -72,17 +73,16 @@ def run_ve_aspen_model(notebook_dir, params_filename, tea_options, verbose=True,
     # Create Excel communicator and run calculator
     # ================================================================
 
-    print('Opening Excel calculator... ', end='')
+    print('Opening Excel calculator... ')
     excelCalculator = Excel(excelFile)
+    excelCalculator.load_aspenModel(tmpFile)
     print('Success!')
 
-    print('Running Excel analysis... ', end='')
-    if not dry_run:
-        excelCalculator.load_aspenModel(tmpFile)
-        excelCalculator.run_macro('solvedcfror')
+    print('Running Excel analysis... ')
+    excelCalculator.run_macro('solvedcfror')
     print('Success!')
 
-    # aspenModel.close()
+    aspenModel.close()
     excelCalculator.close()
 
 
@@ -98,10 +98,20 @@ def main():
     # tea_options = widgetCollect()
     # tea_options = tea_options.export_widgets_to_dict()
     tea_options = {}
-    tea_options['aspen_filename'] = 'DW1102A_AB.bkp'
-    tea_options['excel_filename'] = 'DW1102A_2016UPDATES.xlsm'
+    tea_options['aspen_filename'] = 'bc1707a-sugars_CEH.bkp'
+    tea_options['excel_filename'] = 'bc1707a-sugars_CEH_DREconAssumptions.xlsm'
 
-    run_ve_aspen_model(notebook_dir, params_filename, tea_options)
+
+    tea_mapping = {}
+    tea_mapping['enzyme_loading'] = os.path.join('Data', 'Flowsheeting Options', 'Calculator', 'A400-ENZ', 'Input', 'FORTRAN_EXEC', '#22')
+    tea_mapping['glucose_conv'] = os.path.join('Data', 'Blocks', 'A300', 'Data', 'Blocks', 'CEH', 'Data',
+                                    'Flowsheeting Options', 'Calculator', 'CEH', 'Input', 'FORTRAN_EXEC', '#11')
+    tea_mapping['xylose_conv'] = os.path.join('Data', 'Blocks', 'A300', 'Data', 'Blocks', 'CEH', 'Data',
+                                    'Flowsheeting Options', 'Calculator', 'CEH', 'Input', 'FORTRAN_EXEC', '#12')
+    tea_mapping['arabinose_conv'] = os.path.join('Data', 'Blocks', 'A300', 'Data', 'Blocks', 'CEH', 'Data',
+                                    'Flowsheeting Options', 'Calculator', 'CEH', 'Input', 'FORTRAN_EXEC', '#13')
+
+    run_ve_aspen_model(notebook_dir, params_filename, tea_options, tea_mapping)
 
 if __name__ == "__main__":
     main()
