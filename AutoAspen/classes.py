@@ -76,9 +76,10 @@ class Excel():
 		
 		self.set_cell(aspenFile, 'Set-up', 'B1')
 	
-		self.run_macro('sub_ClearSumData_ASPEN')
+		# self.run_macro('sub_ClearSumData_ASPEN')
+		# print('finished running sub_ClearSumData_ASPEN')
 		self.run_macro('sub_GetSumData_ASPEN')
-		
+		print('finished running sub_GetSumData_ASPEN')
 		
 	def run_macro(self, macro):
 		'''
