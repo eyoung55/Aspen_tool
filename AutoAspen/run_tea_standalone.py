@@ -33,7 +33,7 @@ def _init_tea_replacements(enzyme_loading=10.0, glucose_conv=0.9630, xylose_conv
 
     return tea_replacements
 
-def run_ve_aspen_model(aspenFile, notebook_dir, params_filename, tea_options, outDir):
+def run_aspen_model(aspenFile, notebook_dir, params_filename, tea_options, outDir):
 
     try:
         # ================================================================
@@ -75,7 +75,7 @@ def run_ve_aspen_model(aspenFile, notebook_dir, params_filename, tea_options, ou
         # Save current model state
         # ================================================================
         print('Saving current model definition... ')
-        tmpFile = '%s/%s_bkup.bkp' % (outDir, tea_options['aspen_filename'].split('.')[0])
+        tmpFile = os.path.join(outDir, 'CEH_ve.bkp')
         aspenModel.save_model(tmpFile)
         print('Success!')
 
@@ -85,7 +85,7 @@ def run_ve_aspen_model(aspenFile, notebook_dir, params_filename, tea_options, ou
     return tmpFile
 
 
-def run_ve_excel_calc(excelFile, tmpFile):
+def run_excel_calc(excelFile, tmpFile):
 
     # ================================================================
     # Create Excel communicator and run calculator
@@ -115,7 +115,7 @@ def run_ve_excel_calc(excelFile, tmpFile):
     return mssp
     
 
-def run_ve_tea(notebook_dir, params_filename, tea_options, verbose=True, dry_run=True):
+def run_tea(notebook_dir, params_filename, tea_options, verbose=True, dry_run=True):
 
     # Set the input and output files/directories
     aspenFile = os.path.abspath(tea_options['aspen_filename'])
@@ -124,9 +124,10 @@ def run_ve_tea(notebook_dir, params_filename, tea_options, verbose=True, dry_run
     outDir = 'output'
     os.makedirs(outDir, exist_ok = True)
 
-    tmpFile = run_ve_aspen_model(aspenFile, notebook_dir, params_filename, tea_options, outDir)
+    tmpFile = run_aspen_model(aspenFile, notebook_dir, params_filename, tea_options, outDir)
+    tmpFile = os.path.abspath(tmpFile)
 
-    mssp = run_ve_excel_calc(excelFile, tmpFile)
+    mssp = run_excel_calc(excelFile, tmpFile)
 
     print(f'Selling price: {mssp}')
 
@@ -146,7 +147,7 @@ def main():
     tea_options['aspen_filename'] = 'bc1707a-sugars_CEH.bkp'
     tea_options['excel_filename'] = 've_bc1707a-sugars_CEH.xlsm'
 
-    run_ve_tea(notebook_dir, params_filename, tea_options)
+    run_tea(notebook_dir, params_filename, tea_options)
 
 
 if __name__ == "__main__":

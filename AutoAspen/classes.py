@@ -123,7 +123,7 @@ class Aspen():
 		return value
 		
 		
-	def set_value(self, aspenPath, value, ifFortran, verbose=True):
+	def set_value(self, aspenPath, value, ifFortran, verbose=True, short_name=None):
 		'''
 		Parameters
 		aspenPath: str, path in ASPEN tree
@@ -132,7 +132,8 @@ class Aspen():
 		'''
 		
 		if verbose:
-			print(f'Modifying Variable {aspenPath}')
+			print(f'Modifying Variable {short_name}')
+			print(f'| Path: {aspenPath}')
 			print(f'| Old Value: {self.COM.Tree.FindNode(aspenPath).Value}')
 
 		if ifFortran:
